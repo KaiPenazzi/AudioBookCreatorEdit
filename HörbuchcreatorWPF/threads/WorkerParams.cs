@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HörbuchgreatorWPF.threads
+namespace HörbuchcreatorWPF.threads
 {
     internal class WorkerParams
     {

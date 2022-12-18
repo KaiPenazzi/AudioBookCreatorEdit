@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using NAudio.Wave;
 
-namespace HörbuchgreatorWPF.tools
+namespace HörbuchcreatorWPF.tools
 {
     public class ByteToWav
     {
