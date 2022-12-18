@@ -28,11 +28,11 @@ namespace HörbuchcreatorWPF
             LabelFinished.Background = System.Windows.Media.Brushes.Green;
         }
 
-        private async void ButtonCreate_Click(object sender, RoutedEventArgs e)
+        private void ButtonCreate_Click(object sender, RoutedEventArgs e)
         {
             LabelFinished.Visibility = Visibility.Hidden;
             
-            if (Programm.CreateAudioFile(ButtonCreate))
+            if (Programm.CreateAudioFile(ButtonCreate, ComboBoxLanguage.Text))
             {
                 var worker = new MyBackgroundWorker();
                 worker.WorkerReportsProgress = true;

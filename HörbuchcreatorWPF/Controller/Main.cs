@@ -1,16 +1,10 @@
-﻿using HörbuchcreatorWPF.threads;
-using Microsoft.CognitiveServices.Speech;
+﻿using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 using Microsoft.WindowsAPICodePack.Dialogs;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO.Compression;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using HtmlAgilityPack;
 
@@ -26,7 +20,7 @@ namespace HörbuchcreatorWPF.Controller
             speechconfig = SpeechConfig.FromSubscription("678ac92517fc40ffa012d83204f2e979", "germanywestcentral");
         }
 
-        public bool CreateAudioFile(Button ButtonGreate)
+        public bool CreateAudioFile(Button ButtonGreate, string Language)
         {
             // Create a new common save file dialog
             CommonSaveFileDialog dialog = new CommonSaveFileDialog();
@@ -49,12 +43,11 @@ namespace HörbuchcreatorWPF.Controller
                 // Save the file with the specified name
                 // (You would need to implement your own code for this)
                 audioconfig = AudioConfig.FromWavFileOutput(filePath);
+                speechconfig.SpeechSynthesisLanguage = LanguageNameToShort(Language);
                 return true;
             }
             return false;
         }
-
-        
 
         public void sendRequests(List<string> requests, SpeechSynthesizer SS, object sender)
         {
@@ -121,6 +114,56 @@ namespace HörbuchcreatorWPF.Controller
             return "";
         }
 
+        private string LanguageNameToShort(string language)
+        {
+            string ret;
+            switch (language)
+            {
+                case "Deutsch":
+                    ret = "de-DE";
+                    break;
+                case "Arabic":
+                    ret = "ar-EG";
+                    break;
+                case "Chinese":
+                    ret = "zh-CN";
+                    break;
+                case "Dutch":
+                    ret = "nl-NL";
+                    break;
+                case "English":
+                    ret = "en-AU";
+                    break;
+                case "French":
+                    ret = "fr-FR";
+                    break;
+                case "Hindi":
+                    ret = "hi-IN";
+                    break;
+                case "Italian":
+                    ret = "it-IT";
+                    break;
+                case "Japanese":
+                    ret = "ja-JP";
+                    break;
+                case "Korean":
+                    ret = "ko-KR";
+                    break;
+                case "Portuguese":
+                    ret = "pt-BR";
+                    break;
+                case "Russian":
+                    ret = "ru-RU";
+                    break;
+                case "Spanish":
+                    ret = "es-ES";
+                    break;
+                default:
+                    ret = "en-AU";
+                    break;
+            }
 
+            return ret;
+        }
     }
 }

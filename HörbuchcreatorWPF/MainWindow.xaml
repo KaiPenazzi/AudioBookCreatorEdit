@@ -12,10 +12,20 @@
         <Label x:Name="LabelFinished" Content="Finished" HorizontalAlignment="Left" Margin="530,383,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.526,0.425" Background="#FF85DE7D"/>
         <Button x:Name="ButtonImportEpub" Content="open Epub" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Click="Button_Click"/>
         <ProgressBar x:Name="ProgressBarMain" HorizontalAlignment="Left" Height="24" Margin="76,10,0,0" VerticalAlignment="Top" Width="654"/>
-        <ComboBox HorizontalAlignment="Left" Margin="160,385,0,0" VerticalAlignment="Top" Width="120">
+        <ComboBox x:Name="ComboBoxLanguage" HorizontalAlignment="Left" Margin="160,385,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem IsSelected="True">English</ComboBoxItem>
             <ComboBoxItem>Deutsch</ComboBoxItem>
+            <ComboBoxItem>Arabic</ComboBoxItem>
+            <ComboBoxItem>Chinese</ComboBoxItem>
+            <ComboBoxItem>Dutch</ComboBoxItem>
+            <ComboBoxItem>French</ComboBoxItem>
+            <ComboBoxItem>Hindi</ComboBoxItem>
+            <ComboBoxItem>Italian</ComboBoxItem>
+            <ComboBoxItem>Japanese</ComboBoxItem>
+            <ComboBoxItem>Korean</ComboBoxItem>
+            <ComboBoxItem>Portuguese</ComboBoxItem>
+            <ComboBoxItem>Russian</ComboBoxItem>
+            <ComboBoxItem>Spanish</ComboBoxItem>
         </ComboBox>
-
     </Grid>
 </Window>
