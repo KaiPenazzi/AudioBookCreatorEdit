@@ -1,0 +1,21 @@
+﻿<Window x:Class="HörbuchgreatorWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HörbuchgreatorWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="470" Width="800">
+    <Grid>
+        <Button x:Name="ButtonGreate" Content="greate" HorizontalAlignment="Center" Margin="0,367,0,0" VerticalAlignment="Top" Width="190" Height="57" Click="ButtonGreate_Click"/>
+        <TextBox x:Name="TextBoxInput" HorizontalAlignment="Center" Margin="0,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="780" Height="323" AcceptsReturn="True" AcceptsTab="True"/>
+        <Label x:Name="LabelFinished" Content="Finished" HorizontalAlignment="Left" Margin="530,383,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.526,0.425" Background="#FF85DE7D"/>
+        <Button x:Name="ButtonImportEpub" Content="open Epub" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Click="Button_Click"/>
+        <ProgressBar x:Name="ProgressBarMain" HorizontalAlignment="Left" Height="24" Margin="76,10,0,0" VerticalAlignment="Top" Width="654"/>
+        <ComboBox HorizontalAlignment="Left" Margin="160,385,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem IsSelected="True">English</ComboBoxItem>
+            <ComboBoxItem>Deutsch</ComboBoxItem>
+        </ComboBox>
+
+    </Grid>
+</Window>
