@@ -11,6 +11,8 @@ using System.IO;
 using HtmlAgilityPack;
 using HörbuchcreatorWPF.Controller;
 using HörbuchcreatorWPF.tools;
+using System.Windows.Controls;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace HörbuchcreatorWPF
 {
@@ -26,13 +28,15 @@ namespace HörbuchcreatorWPF
 
             LabelFinished.Visibility = Visibility.Hidden;
             LabelFinished.Background = System.Windows.Media.Brushes.Green;
+
+            SetVoices("English");
         }
 
         private void ButtonCreate_Click(object sender, RoutedEventArgs e)
         {
             LabelFinished.Visibility = Visibility.Hidden;
             
-            if (Programm.CreateAudioFile(ButtonCreate, ComboBoxLanguage.Text))
+            if (Programm.CreateAudioFile(ButtonCreate, ComboBoxLanguage.Text, ComboBoxVoices.Text))
             {
                 var worker = new MyBackgroundWorker();
                 worker.WorkerReportsProgress = true;
@@ -78,16 +82,24 @@ namespace HörbuchcreatorWPF
         {
             if (Programm != null)
             {
-                var voices = Programm.GetVoices("Deutsch");
+                ComboBoxItem item = (ComboBoxItem)(sender as ComboBox).SelectedItem;
 
-                ComboBoxVoices.Items.Clear();
-
-                foreach (var voice in voices)
-                {
-                    ComboBoxVoices.Items.Add(voice);
-                }
-                
+                SetVoices(item.Content.ToString());
             }
+        }
+
+        private void SetVoices(string Lang)
+        {
+            var Voices = Programm.GetVoices(Lang);
+
+            ComboBoxVoices.Items.Clear();
+
+            foreach (var voice in Voices)
+            {
+                ComboBoxVoices.Items.Add(voice.LocalName);
+            }
+
+            ComboBoxVoices.SelectedIndex = 0;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace HörbuchcreatorWPF.Controller
             audioconfig = AudioConfig.FromWavFileOutput("");
         }
 
-        public bool CreateAudioFile(Button ButtonGreate, string Language)
+        public bool CreateAudioFile(Button ButtonGreate, string Language, string VoiceName)
         {
             // Create a new common save file dialog
             CommonSaveFileDialog dialog = new CommonSaveFileDialog();
@@ -47,6 +47,8 @@ namespace HörbuchcreatorWPF.Controller
                 // (You would need to implement your own code for this)
                 audioconfig = AudioConfig.FromWavFileOutput(filePath);
                 speechconfig.SpeechSynthesisLanguage = LanguageNameToShort(Language);
+                var voiceinfo = GetVoiceInfo(VoiceName, Language);
+                speechconfig.SpeechSynthesisVoiceName = voiceinfo.Name;
                 return true;
             }
             return false;
@@ -135,7 +137,7 @@ namespace HörbuchcreatorWPF.Controller
                     ret = "nl-NL";
                     break;
                 case "English":
-                    ret = "en-AU";
+                    ret = "en-US";
                     break;
                 case "French":
                     ret = "fr-FR";
@@ -162,7 +164,7 @@ namespace HörbuchcreatorWPF.Controller
                     ret = "es-ES";
                     break;
                 default:
-                    ret = "en-AU";
+                    ret = "en-US";
                     break;
             }
 
@@ -184,6 +186,21 @@ namespace HörbuchcreatorWPF.Controller
             }
 
             return voices;
+        }
+
+        private VoiceInfo GetVoiceInfo(string VoiceName, string Language)
+        {
+            var voices = GetVoices(Language);
+
+            foreach (var voice in voices)
+            {
+                if (voice.LocalName == VoiceName)
+                {
+                    return voice;
+                }
+            }
+
+            return null;
         }
     }
 }
