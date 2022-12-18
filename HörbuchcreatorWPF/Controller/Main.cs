@@ -18,6 +18,7 @@ namespace HörbuchcreatorWPF.Controller
         public Main()
         {
             speechconfig = SpeechConfig.FromSubscription("678ac92517fc40ffa012d83204f2e979", "germanywestcentral");
+            audioconfig = AudioConfig.FromWavFileOutput("");
         }
 
         public bool CreateAudioFile(Button ButtonGreate, string Language)
